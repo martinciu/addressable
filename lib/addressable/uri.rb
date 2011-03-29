@@ -1383,6 +1383,9 @@ module Addressable
       if new_query && !new_query.respond_to?(:to_str)
         raise TypeError, "Can't convert #{new_query.class} into String."
       end
+      
+      new_query = nil if new_query == ""
+      
       @query = new_query ? new_query.to_str : nil
 
       # Reset dependant values
